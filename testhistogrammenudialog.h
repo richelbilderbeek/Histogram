@@ -13,18 +13,16 @@
 #pragma GCC diagnostic pop
 
 namespace ribi {
+namespace thst {
 
-struct TestHistogram;
-
-struct TestHistogramMenuDialog final : public MenuDialog
+struct MenuDialog final : public ::ribi::MenuDialog
 {
-  TestHistogramMenuDialog();
-  ~TestHistogramMenuDialog() noexcept {}
+  MenuDialog();
+  ~MenuDialog() noexcept {}
   int ExecuteSpecific(const std::vector<std::string>& argv) noexcept override;
 
   About GetAbout() const noexcept override;
   Help GetHelp() const noexcept override;
-  boost::shared_ptr<const Program> GetProgram() const noexcept override;
   std::string GetVersion() const noexcept override;
   std::vector<std::string> GetVersionHistory() const noexcept override;
 
@@ -35,6 +33,7 @@ struct TestHistogramMenuDialog final : public MenuDialog
   #endif
 };
 
+} //~namespace thst
 } //~namespace ribi
 
 #endif // TESTHISTOGRAMMENUDIALOG_H

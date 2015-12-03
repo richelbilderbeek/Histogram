@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/images">
-        <file>ToolTestHistogramHistogram.png</file>
+        <file>TestHistogramHistogram.png</file>
     </qresource>
 </RCC>

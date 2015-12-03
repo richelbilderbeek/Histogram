@@ -15,19 +15,18 @@
 #include "testhistogrammenudialog.h"
 #include "fileio.h"
 
-#include "richelbilderbeekprogram.h"
 #include "testtimer.h"
 #include "trace.h"
 #pragma GCC diagnostic pop
 
-ribi::TestHistogramMenuDialog::TestHistogramMenuDialog()
+ribi::thst::MenuDialog::MenuDialog()
 {
   #ifndef NDEBUG
   Test();
   #endif
 }
 
-int ribi::TestHistogramMenuDialog::ExecuteSpecific(const std::vector<std::string>& argv) noexcept
+int ribi::thst::MenuDialog::ExecuteSpecific(const std::vector<std::string>& argv) noexcept
 {
   const int argc = static_cast<int>(argv.size());
   if (argc == 1 || argc > 4)
@@ -38,13 +37,13 @@ int ribi::TestHistogramMenuDialog::ExecuteSpecific(const std::vector<std::string
   return 0;
 }
 
-ribi::About ribi::TestHistogramMenuDialog::GetAbout() const noexcept
+ribi::About ribi::thst::MenuDialog::GetAbout() const noexcept
 {
   About a(
     "Richel Bilderbeek",
     "TestHistogram",
     "tests the Histogram class",
-    "the 8th of May 2015",
+    "December 3rd of 2015",
     "2015-2015",
     "http://www.richelbilderbeek.nl/ToolTestHistogram.htm",
     GetVersion(),
@@ -55,26 +54,20 @@ ribi::About ribi::TestHistogramMenuDialog::GetAbout() const noexcept
   return a;
 }
 
-boost::shared_ptr<const ribi::Program> ribi::TestHistogramMenuDialog::GetProgram() const noexcept
+std::string ribi::thst::MenuDialog::GetVersion() const noexcept
 {
-  const boost::shared_ptr<const ribi::Program> p; //(new ProgramTestHistogram);
-  assert(p);
-  return p;
+  return "2.0";
 }
 
-std::string ribi::TestHistogramMenuDialog::GetVersion() const noexcept
-{
-  return "1.0";
-}
-
-std::vector<std::string> ribi::TestHistogramMenuDialog::GetVersionHistory() const noexcept
+std::vector<std::string> ribi::thst::MenuDialog::GetVersionHistory() const noexcept
 {
   return {
     "2015-05-08: Version 1.0: initial version",
+    "2015-12-03: Version 2.0: moved to own GitHub",
   };
 }
 
-ribi::Help ribi::TestHistogramMenuDialog::GetHelp() const noexcept
+ribi::Help ribi::thst::MenuDialog::GetHelp() const noexcept
 {
   return ribi::Help(
     "TestHistogram",
@@ -88,7 +81,7 @@ ribi::Help ribi::TestHistogramMenuDialog::GetHelp() const noexcept
 }
 
 #ifndef NDEBUG
-void ribi::TestHistogramMenuDialog::Test() noexcept
+void ribi::thst::MenuDialog::Test() noexcept
 {
   {
     static bool is_tested{false};

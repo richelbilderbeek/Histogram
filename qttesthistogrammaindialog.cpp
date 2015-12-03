@@ -17,7 +17,7 @@
 #include "qwt_point_data.h"
 #endif
 
-QtTestHistogramMainDialog::QtTestHistogramMainDialog(QWidget *parent) :
+ribi::thst::QtMainDialog::QtMainDialog(QWidget *parent) :
   QtHideAndShowDialog(parent),
   ui(new Ui::QtTestHistogramMainDialog),
   m_curve_histogram(new QwtPlotCurve)
@@ -60,12 +60,12 @@ QtTestHistogramMainDialog::QtTestHistogramMainDialog(QWidget *parent) :
   }
 }
 
-QtTestHistogramMainDialog::~QtTestHistogramMainDialog()
+ribi::thst::QtMainDialog::~QtMainDialog()
 {
   delete ui;
 }
 
-void QtTestHistogramMainDialog::Run()
+void ribi::thst::QtMainDialog::Run()
 {
   static std::mt19937 mt(42);
   std::normal_distribution<double> d(

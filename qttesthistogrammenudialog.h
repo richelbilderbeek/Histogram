@@ -11,16 +11,17 @@ class QtTestHistogramMenuDialog;
 }
 
 namespace ribi {
+namespace thst {
 
-class QtTestHistogramMenuDialog : public QtHideAndShowDialog
+class QtMenuDialog : public QtHideAndShowDialog
 {
   Q_OBJECT
 
 public:
-  explicit QtTestHistogramMenuDialog(QWidget *parent = 0);
-  QtTestHistogramMenuDialog(const QtTestHistogramMenuDialog&) = delete;
-  QtTestHistogramMenuDialog& operator=(const QtTestHistogramMenuDialog&) = delete;
-  ~QtTestHistogramMenuDialog() noexcept;
+  explicit QtMenuDialog(QWidget *parent = 0);
+  QtMenuDialog(const QtMenuDialog&) = delete;
+  QtMenuDialog& operator=(const QtMenuDialog&) = delete;
+  ~QtMenuDialog() noexcept;
 
 protected:
   void keyPressEvent(QKeyEvent *);
@@ -38,6 +39,7 @@ private:
   #endif
 };
 
+} //~namespace thst
 } //~namespace ribi
 
 #endif // QTTESTHISTOGRAMMENUDIALOG_H

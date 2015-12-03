@@ -47,7 +47,7 @@ QPlainTextEdit {
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="ToolTestHistogram.qrc">:/images/ToolTestHistogramHistogram.png</pixmap>
+      <pixmap resource="TestHistogram.qrc">:/images/TestHistogramHistogram.png</pixmap>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -88,7 +88,7 @@ QPlainTextEdit {
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="ToolTestHistogram.qrc"/>
+  <include location="TestHistogram.qrc"/>
  </resources>
  <connections/>
 </ui>

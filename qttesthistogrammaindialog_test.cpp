@@ -5,7 +5,7 @@
 #include <fstream>
 #include "fileio.h"
 
-void QtTestHistogramMainDialog::Test() noexcept
+void ribi::thst::QtMainDialog::Test() noexcept
 {
   {
     static bool is_tested{false};

@@ -9,13 +9,18 @@ namespace Ui {
   class QtTestHistogramMainDialog;
 }
 
-class QtTestHistogramMainDialog : public ribi::QtHideAndShowDialog
+namespace ribi {
+namespace thst {
+
+class QtMainDialog : public ribi::QtHideAndShowDialog
 {
   Q_OBJECT
   
 public:
-  explicit QtTestHistogramMainDialog(QWidget *parent = 0);
-  ~QtTestHistogramMainDialog();
+  explicit QtMainDialog(QWidget *parent = 0);
+  QtMainDialog(const QtMainDialog&) = delete;
+  QtMainDialog& operator=(const QtMainDialog&) = delete;
+  ~QtMainDialog();
 
 private slots:
   void Run();
@@ -29,5 +34,8 @@ private:
   static void Test() noexcept;
   #endif
 };
+
+} //~namespace thst
+} //~namespace ribi
 
 #endif // QTTESTHISTOGRAMMAINDIALOG_H_H

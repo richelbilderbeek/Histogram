@@ -13,32 +13,32 @@
 #pragma GCC diagnostic pop
 
 
-ribi::QtTestHistogramMenuDialog::QtTestHistogramMenuDialog(QWidget *parent) :
+ribi::thst::QtMenuDialog::QtMenuDialog(QWidget *parent) :
     QtHideAndShowDialog(parent),
     ui(new Ui::QtTestHistogramMenuDialog)
 {
   ui->setupUi(this);
 }
 
-ribi::QtTestHistogramMenuDialog::~QtTestHistogramMenuDialog() noexcept
+ribi::thst::QtMenuDialog::~QtMenuDialog() noexcept
 {
   delete ui;
 }
 
-void ribi::QtTestHistogramMenuDialog::keyPressEvent(QKeyEvent * event)
+void ribi::thst::QtMenuDialog::keyPressEvent(QKeyEvent * event)
 {
   if (event->key() == Qt::Key_Escape) close();
 }
 
-void ribi::QtTestHistogramMenuDialog::on_button_start_clicked()
+void ribi::thst::QtMenuDialog::on_button_start_clicked()
 {
-  QtTestHistogramMainDialog d;
+  QtMainDialog d;
   ShowChild(&d);
 }
 
-void ribi::QtTestHistogramMenuDialog::on_button_about_clicked()
+void ribi::thst::QtMenuDialog::on_button_about_clicked()
 {
-  About a = TestHistogramMenuDialog().GetAbout();
+  About a = MenuDialog().GetAbout();
   a.AddLibrary("QtHideAndShowDialog version: " + QtHideAndShowDialog::GetVersion());
   QtAboutDialog d(a);
   d.setStyleSheet(this->styleSheet());
@@ -48,13 +48,13 @@ void ribi::QtTestHistogramMenuDialog::on_button_about_clicked()
   this->show();
 }
 
-void ribi::QtTestHistogramMenuDialog::on_button_quit_clicked()
+void ribi::thst::QtMenuDialog::on_button_quit_clicked()
 {
   this->close();
 }
 
 #ifndef NDEBUG
-void ribi::QtTestHistogramMenuDialog::Test() noexcept
+void ribi::thst::QtMenuDialog::Test() noexcept
 {
   {
     static bool is_tested{false};
@@ -62,6 +62,6 @@ void ribi::QtTestHistogramMenuDialog::Test() noexcept
     is_tested = true;
   }
   const TestTimer test_timer(__func__,__FILE__,1.0);
-  QtTestHistogramMenuDialog();
+  QtMenuDialog();
 }
 #endif

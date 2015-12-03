@@ -4,7 +4,7 @@
 int main(int argc, char *argv[])
 {
   QApplication a(argc, argv);
-  ribi::QtTestHistogramMenuDialog w;
+  ribi::thst::QtMenuDialog w;
   w.show();
   return a.exec();
 }
