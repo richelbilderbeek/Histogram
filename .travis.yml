@@ -1,0 +1,41 @@
+sudo: required
+#dist: trusty
+language: cpp
+compiler: gcc
+
+install: 
+  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
+  #- sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
+  - sudo apt-get update -qq 
+  # - sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev
+  - sudo apt-get install -qq libstdc++6-4.7-dev  
+  - sudo apt-get install -qq g++-5
+  - sudo pip install codecov
+  - ./install_oclint.sh
+  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90
+  - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
+
+addons:
+  apt:
+    sources:
+    - boost-latest
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-5
+    - g++-5
+    - libboost1.55-all-dev
+
+script: 
+  - ./install_other_githubs.sh
+  - ./build_console.sh
+  - ./build_desktop.sh
+  - ./get_code_cov.sh
+  - codecov
+  - ./do_oclint.sh
+
+after_success: 
+  - bash <(curl -s https://codecov.io/bash)
+
+after_failure: 
+  - cat oclint.log
+  - cd /usr/include; find -P . -name "QFile"
