@@ -5,10 +5,10 @@
 #include <QKeyEvent>
 
 #include "qtaboutdialog.h"
-#include "testhistogrammenudialog.h"
+#include "histogrammenudialog.h"
 #include "qttesthistogrammaindialog.h"
-#include "trace.h"
-#include "testtimer.h"
+
+
 #include "ui_qttesthistogrammenudialog.h"
 #pragma GCC diagnostic pop
 
@@ -52,16 +52,3 @@ void ribi::thst::QtMenuDialog::on_button_quit_clicked()
 {
   this->close();
 }
-
-#ifndef NDEBUG
-void ribi::thst::QtMenuDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-  QtMenuDialog();
-}
-#endif

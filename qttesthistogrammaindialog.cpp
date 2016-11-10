@@ -1,6 +1,8 @@
 #include "qttesthistogrammaindialog.h"
 
 #include <fstream>
+#include <random>
+
 #include <QDesktopWidget>
 #include <QFileDialog>
 

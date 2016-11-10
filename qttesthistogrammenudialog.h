@@ -33,10 +33,6 @@ private slots:
 
 private:
   Ui::QtTestHistogramMenuDialog *ui;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace thst

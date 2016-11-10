@@ -1,10 +1,10 @@
 INCLUDEPATH += ../histogram
 
 SOURCES += \
-    $$PWD/testhistogrammenudialog.cpp
+    $$PWD/histogrammenudialog.cpp
 
 HEADERS  += \
-    $$PWD/testhistogrammenudialog.h
+    $$PWD/histogrammenudialog.h
 
 RESOURCES += \
     Histogram.qrc
