@@ -27,15 +27,11 @@ addons:
 
 script: 
   - ./install_other_githubs.sh
-  - ./build_console.sh
-  - ./build_desktop.sh
+  - qmake HistogramDemoDesktop.pro
+  - make
   - ./get_code_cov.sh
   - codecov
   - ./do_oclint.sh
 
 after_success: 
   - bash <(curl -s https://codecov.io/bash)
-
-after_failure: 
-  - cat oclint.log
-  - cd /usr/include; find -P . -name "QFile"

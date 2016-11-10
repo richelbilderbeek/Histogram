@@ -5,7 +5,7 @@ include(../RibiLibraries/GeneralDesktop.pri)
 include(../RibiLibraries/Qwt.pri)
 
 #Specific, console
-include(CppHistogram.pri)
-include(TestHistogramDesktop.pri)
+include(Histogram.pri)
+include(HistogramDemoDesktop.pri)
 
 SOURCES += qtmain.cpp
