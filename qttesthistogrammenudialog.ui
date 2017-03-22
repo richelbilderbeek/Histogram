@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>TestHistogram</string>
+   <string>Histogram demo</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog {
