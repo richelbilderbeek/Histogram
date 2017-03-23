@@ -1,37 +1,52 @@
-sudo: required
-#dist: trusty
+sudo: require
 language: cpp
 compiler: gcc
+dist: trusty
+
+# Boost
+addons:
+  apt: 
+    packages: libboost-all-dev
+
+before_install:
+  # C++14
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
 
 install: 
-  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
-  #- sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
-  - sudo apt-get update -qq 
-  # - sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev
-  - sudo apt-get install -qq libstdc++6-4.7-dev  
+  # C++14
   - sudo apt-get install -qq g++-5
-  - sudo pip install codecov
-  - ./install_oclint.sh
-  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90
+  # Qt5
+  - sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev
   - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
+  # cppcheck
+  - sudo apt-get install -qq cppcheck
+  # Codecov
+  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90
+  - sudo pip install codecov
+  # OCLint
+  - ./install_oclint
+  # Other GitHubs
+  - ./download_other_githubs
+  - ./install_other_githubs
 
-addons:
-  apt:
-    sources:
-    - boost-latest
-    - ubuntu-toolchain-r-test
-    packages:
-    - gcc-5
-    - g++-5
-    - libboost1.55-all-dev
+# Start virtual X server, from https://docs.travis-ci.com/user/gui-and-headless-browsers/
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
 
 script: 
-  - ./install_other_githubs.sh
-  - qmake HistogramDemoDesktop.pro
+  - qmake
   - make
-  - ./get_code_cov.sh
-  - codecov
-  - ./do_oclint.sh
+  # Get code coverage
+  - ./get_code_cov >/dev/null
+  - codecov >/dev/null
+  # cppcheck
+  - cppcheck --quiet --error-exitcode=1 . 
+  # Call OCLint
+  - ./do_oclint
 
-after_success: 
+after_success:
   - bash <(curl -s https://codecov.io/bash)
