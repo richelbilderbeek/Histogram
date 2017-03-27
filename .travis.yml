@@ -37,8 +37,9 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script: 
-  - qmake
-  - make
+  - qmake -qt=qt5
+  - make debug
+  - ./HistogramDemoDesktop --profile
   # Get code coverage
   - ./get_code_cov >/dev/null
   - codecov >/dev/null
