@@ -1,5 +1,5 @@
 INCLUDEPATH += \
-    ../Histogram
+    $$PWD
 
 SOURCES += \
     $$PWD/histogram.cpp
